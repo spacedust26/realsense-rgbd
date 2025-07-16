@@ -3,3 +3,4 @@ opencv-python
 numpy
 pillow
 open3d
+python3.10-tk
