@@ -70,6 +70,8 @@ class RGBDCollectorApp:
         self.retake_btn.grid(row=0, column=2, padx=5)
         self.quit_btn = tk.Button(self.btn_frame, text="Quit (Q)", command=self.quit_app)
         self.quit_btn.grid(row=0, column=3, padx=5)
+        self.pcd_btn = tk.Button(self.btn_frame, text="Preview PointCloud (P)", command=self.preview_pointcloud_interactive)
+        self.pcd_btn.grid(row=0, column=4, padx=5)
 
         self.root.bind('<Return>', lambda e: self.capture_frame())
         self.root.bind('s', lambda e: self.save_data())
@@ -78,6 +80,9 @@ class RGBDCollectorApp:
         self.root.bind('R', lambda e: self.retake_frame())
         self.root.bind('q', lambda e: self.quit_app())
         self.root.bind('Q', lambda e: self.quit_app())
+        self.root.bind('p', lambda e: self.preview_pointcloud_interactive())
+        self.root.bind('P', lambda e: self.preview_pointcloud_interactive())
+
 
         self.update_video()
 
@@ -218,6 +223,13 @@ class RGBDCollectorApp:
         print(f"[SAVED] {img_name}")
         self.counter += 1
         self.reset_capture_state()
+
+    def preview_pointcloud_interactive(self):
+        if self.captured_pcd is not None:
+            print("[INFO] Launching interactive 3D point cloud viewer...")
+            o3d.visualization.draw_geometries([self.captured_pcd])
+        else:
+            print("[WARNING] No point cloud to preview.")
 
     def retake_frame(self):
         print("[RETAKE] Retaking frame.")

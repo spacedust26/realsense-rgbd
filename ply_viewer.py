@@ -1,7 +1,7 @@
 import open3d as o3d
 
 def view_ply():
-    ply_path = "dataset/pointcloud/img0001.ply"  # Change this to your .ply file path
+    ply_path = "dataset/pointcloud/img0002.ply"  # Change this to your .ply file path
     pcd = o3d.io.read_point_cloud(ply_path)
     if pcd.is_empty():
         print(f"Failed to load point cloud or file is empty: {ply_path}")
