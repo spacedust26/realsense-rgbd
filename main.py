@@ -133,7 +133,6 @@ class RGBDCollectorApp:
             plane_eq,
             plane_inliers,
             non_plane_pts,
-            self.class_var.get()
         )
         mask_viz = (mask * 255).astype(np.uint8) # Convert binary mask to uint8 for visualization
         mask_bgr = cv2.cvtColor(mask_viz, cv2.COLOR_GRAY2BGR) # Convert to BGR for visualization
@@ -172,7 +171,7 @@ class RGBDCollectorApp:
         self.retake_btn.config(state=tk.NORMAL)
         print(f"[INFO] Frame captured for class: {self.class_var.get()}")
 
-    def save_info_txt(self, img_name, rgb, depth, intrinsics, plane_eq, plane_inliers, non_plane_pts, class_label):
+    def save_info_txt(self, img_name, rgb, depth, intrinsics, plane_eq, plane_inliers, non_plane_pts):
         txt_path = self.info_dir / f"{img_name}.txt"
         with open(txt_path, 'w') as f:
             f.write(f"RGB shape: {rgb.shape}\n")
@@ -186,7 +185,6 @@ class RGBDCollectorApp:
             f.write(f"Plane equation: {plane_eq[0]:.6f}x + {plane_eq[1]:.6f}y + {plane_eq[2]:.6f}z + {plane_eq[3]:.6f} = 0\n")
             f.write(f"Plane inliers: {plane_inliers}\n")
             f.write(f"Non-plane points: {non_plane_pts}\n")
-            f.write(f"Class label: {class_label}\n")
         print(f"[INFO] Info saved to {txt_path}")
 
     def save_data(self):

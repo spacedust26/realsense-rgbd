@@ -3,7 +3,7 @@ import open3d as o3d
 import cv2
 
 class SegmentationHelper:
-    def __init__(self, intrinsics, distance_threshold=0.01, ransac_n=3, num_iterations=1000):
+    def __init__(self, intrinsics, distance_threshold=0.005, ransac_n=3, num_iterations=1000):
         self.intrinsics = intrinsics
         self.distance_threshold = distance_threshold
         self.ransac_n = ransac_n

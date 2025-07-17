@@ -60,7 +60,7 @@ Intel Realsense D435i
     python3 main.py
     ```
 
-5. Controls (using kevboard or gui)
+5. Controls (using keyboard or gui)
     1. Enter - Capture current RGB-D frame
     2. S - Save captured frame and label
     3. R - Retake / discard frame
